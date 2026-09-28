@@ -1298,6 +1298,39 @@ img {
   max-width: 820px;
 }
 
+.about-page-band .about-subsection {
+  margin: 0 auto;
+  max-width: 1040px;
+}
+
+.about-section-copy {
+  margin: 0 auto;
+  max-width: 820px;
+}
+
+.about-section-copy .subpage-content {
+  margin: 0;
+  max-width: none;
+}
+
+.about-subsection-title {
+  color: #f8fafc;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+}
+
+.about-subsection-title i {
+  color: var(--oos-cyan);
+}
+
+.about-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: clamp(2.5rem, 6vw, 3.5rem) auto;
+  max-width: 1040px;
+}
+
 .subpage-content p {
   color: #cbd5e1;
   font-size: 1.06rem;
@@ -2175,5 +2208,126 @@ img {
   .chat-window {
     bottom: 88px;
     right: 16px;
+  }
+}
+
+
+/* =========================================
+   OUTOFSIGHT CLIENTS – AUTO CAROUSEL
+========================================= */
+.client-carousel-section {
+  background: var(--oos-bg);
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
+}
+
+.client-carousel-heading {
+  color: #fff;
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 clamp(1.6rem, 4vw, 2.6rem);
+  padding: 0 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.client-carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.client-carousel::before,
+.client-carousel::after {
+  content: "";
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 60px;
+  z-index: 2;
+}
+
+.client-carousel::before {
+  background: linear-gradient(to right, var(--oos-bg), transparent);
+  left: 0;
+}
+
+.client-carousel::after {
+  background: linear-gradient(to left, var(--oos-bg), transparent);
+  right: 0;
+}
+
+.client-carousel-track {
+  animation: oosClientScroll 40s linear infinite;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+  width: max-content;
+}
+
+.client-carousel:hover .client-carousel-track {
+  animation-play-state: paused;
+}
+
+.client-logo {
+  align-items: center;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex: 0 0 auto;
+  height: 150px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 10px 14px;
+  width: 260px;
+}
+
+.client-logo img {
+  display: block;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+  width: 100%;
+}
+
+/* Some logo files have built-in white space / off-white backgrounds; scale so all logos read at a similar size */
+.client-logo--satchwell img { transform: scale(1.55); }
+.client-logo--plumblink img { transform: scale(1.25); }
+.client-logo--iridescence img { transform: scale(1.3); }
+.client-logo--gsm img { transform: scale(1.05); }
+
+@keyframes oosClientScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    /* 4 identical groups: shift by exactly one group (25%) plus its trailing gap for a seamless loop */
+    transform: translateX(calc(-25% - 0.375rem));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .client-logo {
+    height: 110px;
+    width: 200px;
+  }
+
+  .client-carousel::before,
+  .client-carousel::after {
+    width: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-carousel {
+    overflow-x: auto;
+  }
+
+  .client-carousel-track {
+    animation: none;
   }
 }
