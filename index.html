@@ -22,6 +22,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="theme-color" content="#020b18">
+  <link rel="preload" as="image" href="img/oos/outofsight-logo.png" fetchpriority="high">
+  <link rel="preload" as="image" href="img/oos/custom-built-websites.jpeg" fetchpriority="high">
+
 
   <!-- =========================================
        PRIMARY SEO
@@ -453,6 +457,55 @@
 </head>
 
 <body>
+  <div id="cookieConsent" class="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie and privacy notice">
+    <div class="cookie-consent-inner">
+      <p class="cookie-consent-text">
+        <strong>OutofSight</strong> builds high-converting websites, AI chatbots, and automation systems for businesses across Africa.
+        We use cookies and collect basic contact and usage information whenever you message us, chat with our AI assistant, or interact with this site, in line with our
+        <button type="button" class="cookie-consent-link" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</button>
+        and
+        <button type="button" class="cookie-consent-link" data-bs-toggle="modal" data-bs-target="#termsModal">Terms &amp; Conditions</button>.
+      </p>
+      <div class="cookie-consent-actions">
+        <button type="button" id="cookieDecline" class="cookie-btn cookie-btn-outline">Decline</button>
+        <button type="button" id="cookieAccept" class="cookie-btn cookie-btn-solid">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie consent banner -->
+  <script>
+    (function () {
+      var STORAGE_KEY = 'outofsightCookieConsent';
+      var banner = document.getElementById('cookieConsent');
+      if (!banner) return;
+
+      var accepted;
+      try {
+        accepted = localStorage.getItem(STORAGE_KEY);
+      } catch (e) {
+        accepted = null;
+      }
+
+      if (!accepted) {
+        banner.classList.add('cookie-consent--visible');
+      }
+
+      function setChoice(value) {
+        try {
+          localStorage.setItem(STORAGE_KEY, value);
+        } catch (e) {
+          /* localStorage unavailable — banner will simply reappear next visit */
+        }
+        banner.classList.remove('cookie-consent--visible');
+      }
+
+      var acceptBtn = document.getElementById('cookieAccept');
+      var declineBtn = document.getElementById('cookieDecline');
+      if (acceptBtn) acceptBtn.addEventListener('click', function () { setChoice('accepted'); });
+      if (declineBtn) declineBtn.addEventListener('click', function () { setChoice('declined'); });
+    })();
+  </script>
   <header id="mainNav" class="site-header sticky-top">
     <div class="topbar py-2">
       <div class="container d-flex justify-content-center justify-content-md-between align-items-center gap-3">
@@ -473,7 +526,7 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="#home" aria-label="OutofSight home">
-          <img src="img/oos/outofsight-logo.png" alt="OutofSight logo">
+          <img src="img/oos/outofsight-logo.png" alt="OutofSight logo" decoding="async" fetchpriority="high">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -642,8 +695,9 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
             <div class="service-media">
               <img
                 src="img/oos/custom-built-websites.jpeg"
+                fetchpriority="high"
                 alt="Custom high-converting website design and development for businesses"
-              >
+               decoding="async">
             </div>
 
             <div class="service-body">
@@ -695,7 +749,7 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
               <img
                 src="img/oos/google-domination-suite.jpeg"
                 alt="SEO and Google visibility strategy for businesses"
-              >
+               decoding="async">
             </div>
 
             <div class="service-body">
@@ -748,7 +802,7 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
               <img
                 src="img/oos/social-media-domination.jpeg"
                 alt="Social media marketing and content systems for businesses"
-              >
+               decoding="async">
             </div>
 
             <div class="service-body">
@@ -801,7 +855,7 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
               <img
                 src="img/oos/paid-ads-management.jpeg"
                 alt="Paid advertising and lead generation funnel for businesses"
-              >
+               decoding="async">
             </div>
 
             <div class="service-body">
@@ -853,7 +907,7 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
               <img
                 src="img/oos/AI Chatbot.jpeg"
                 alt="AI chatbot and business automation system"
-              >
+               decoding="async">
             </div>
 
             <div class="service-body">
@@ -930,26 +984,26 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
       </div>
       <div class="client-carousel">
         <div class="client-carousel-track">
-          <div class="client-logo client-logo--gsm"><img src="img/oos/client-gsm.png" alt="GSM Marketing and Installations logo" loading="lazy"></div>
-          <div class="client-logo client-logo--plumblink"><img src="img/oos/client-plumblink.png" alt="Plumblink logo" loading="lazy"></div>
-          <div class="client-logo client-logo--satchwell"><img src="img/oos/client-satchwell.png" alt="Satchwell logo" loading="lazy"></div>
-          <div class="client-logo client-logo--hudini"><img src="img/oos/client-hudini.png" alt="Hudini Plumbing logo" loading="lazy"></div>
-          <div class="client-logo client-logo--iridescence"><img src="img/oos/client-iridescence.png" alt="Iridescence logo" loading="lazy"></div>
-          <div class="client-logo client-logo--gsm"><img src="img/oos/client-gsm.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--plumblink"><img src="img/oos/client-plumblink.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--satchwell"><img src="img/oos/client-satchwell.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--hudini"><img src="img/oos/client-hudini.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--iridescence"><img src="img/oos/client-iridescence.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--gsm"><img src="img/oos/client-gsm.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--plumblink"><img src="img/oos/client-plumblink.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--satchwell"><img src="img/oos/client-satchwell.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--hudini"><img src="img/oos/client-hudini.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--iridescence"><img src="img/oos/client-iridescence.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--gsm"><img src="img/oos/client-gsm.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--plumblink"><img src="img/oos/client-plumblink.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--satchwell"><img src="img/oos/client-satchwell.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--hudini"><img src="img/oos/client-hudini.png" alt="" aria-hidden="true" loading="lazy"></div>
-          <div class="client-logo client-logo--iridescence"><img src="img/oos/client-iridescence.png" alt="" aria-hidden="true" loading="lazy"></div>
+          <div class="client-logo client-logo--gsm"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/gsm-logo.png" alt="GSM Marketing and Installations logo" decoding="async"></div>
+          <div class="client-logo client-logo--plumblink"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/plumblink.png" alt="Plumblink logo" decoding="async"></div>
+          <div class="client-logo client-logo--satchwell"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/satchwell.png" alt="Satchwell logo" decoding="async"></div>
+          <div class="client-logo client-logo--hudini"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/Hudini.png" decoding="async"></div>
+          <div class="client-logo client-logo--iridescence"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/Iridelogo.png" alt="Iridescence logo" decoding="async"></div>
+          <div class="client-logo client-logo--gsm"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/gsm-logo.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--plumblink"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/plumblink.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--satchwell"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/satchwell.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--hudini"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/Hudini.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--iridescence"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/Iridelogo.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--gsm"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/gsm-logo.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--plumblink"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/plumblink.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--satchwell"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/satchwell.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--hudini"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/Hudini.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--iridescence"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/Iridelogo.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--gsm"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/gsm-logo.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--plumblink"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/plumblink.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--satchwell"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/satchwell.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--hudini"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/Hudini.png" alt="" aria-hidden="true" decoding="async"></div>
+          <div class="client-logo client-logo--iridescence"><img src="/Users/jaidon/Desktop/OutofSight Master Folder/OutofSight Website/website/img/oos/Iridelogo.png" alt="" aria-hidden="true" decoding="async"></div>
         </div>
       </div>
     </section>
@@ -1057,78 +1111,78 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
 
 <h2>High-Converting Websites & Digital Systems Built for Real Businesses</h2>
         </div>
-        <img class="portfolio-banner" src="img/oos/WB Design Section.png" alt="OutofSight website design and digital systems portfolio showcase" data-aos="fade-up">
+        <img class="portfolio-banner" src="img/oos/WB Design Section.png" alt="OutofSight website design and digital systems portfolio showcase" data-aos="fade-up" decoding="async">
       </div>
 
       <div class="portfolio-strip" data-aos="fade-up">
         <div class="portfolio-track">
           <div class="portfolio-slide" data-portfolio-category="solar">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-dhaka-city-solar.png" alt="Dhaka City Solar website mockup">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-4.png" alt="Dhaka City Solar logo"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-dhaka-city-solar.png" alt="Dhaka City Solar website mockup" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-4.png" alt="Dhaka City Solar logo" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Dhaka City Solar</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="solar">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-sunnymac-solar.png" alt="SunnyMac Solar website mockup">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-3.png" alt="SunnyMac Solar logo"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-sunnymac-solar.png" alt="SunnyMac Solar website mockup" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-3.png" alt="SunnyMac Solar logo" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>SunnyMac Solar</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="solar">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-unique-solar.png" alt="Unique Solar Residential website mockup">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-2.png" alt="Unique Solar Residential logo"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-unique-solar.png" alt="Unique Solar Residential website mockup" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-2.png" alt="Unique Solar Residential logo" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Unique Solar Residential</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="solar">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-solar-caribbean.png" alt="Solar Caribbean website mockup">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-1.png" alt="Solar Caribbean logo"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-solar-caribbean.png" alt="Solar Caribbean website mockup" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-1.png" alt="Solar Caribbean logo" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Solar Caribbean</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="engineering">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-praman-cad.png" alt="PramanCAD Engineering website mockup">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-5.png" alt="PramanCAD Engineering logo"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-praman-cad.png" alt="PramanCAD Engineering website mockup" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-5.png" alt="PramanCAD Engineering logo" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>PramanCAD Engineering</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="plumbing">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-hudini-plumbing.png" alt="Hudini Plumbing website mockup">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-6.png" alt="Hudini Plumbing logo"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-hudini-plumbing.png" alt="Hudini Plumbing website mockup" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-6.png" alt="Hudini Plumbing logo" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Hudini Plumbing</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="other">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/Bublez.png" alt="Bubblez website mockup">
-              <div class="portfolio-slide-badge"><img src="img/oos/BublezLogo.png" alt="Bubblez logo"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/Bublez.png" alt="Bubblez website mockup" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/BublezLogo.png" alt="Bubblez logo" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Bubblez</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="other">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/BBR.png" alt="Blushed by Rosery website mockup">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-10.png" alt="Blushed by Rosery logo"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/BBR.png" alt="Blushed by Rosery website mockup" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-10.png" alt="Blushed by Rosery logo" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Blushed by Rosery</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="other">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/JLH.png" alt="Juan Look website mockup">
-              <div class="portfolio-slide-badge"><img src="img/oos/JLLogo.png" alt="Juan Look logo"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/JLH.png" alt="Juan Look website mockup" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/JLLogo.png" alt="Juan Look logo" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Juan Look</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="other">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/Iridescence.png" alt="Iridescence website mockup">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-8.jpeg" alt="Iridescence logo"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/Iridescence.png" alt="Iridescence website mockup" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-8.jpeg" alt="Iridescence logo" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Iridescence</h3></div>
           </div>
@@ -1136,71 +1190,71 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
           <!-- duplicate set for seamless infinite loop -->
           <div class="portfolio-slide" data-portfolio-category="solar" aria-hidden="true">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-dhaka-city-solar.png" alt="" aria-hidden="true">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-4.png" alt="" aria-hidden="true"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-dhaka-city-solar.png" alt="" aria-hidden="true" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-4.png" alt="" aria-hidden="true" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Dhaka City Solar</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="solar" aria-hidden="true">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-sunnymac-solar.png" alt="" aria-hidden="true">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-3.png" alt="" aria-hidden="true"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-sunnymac-solar.png" alt="" aria-hidden="true" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-3.png" alt="" aria-hidden="true" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>SunnyMac Solar</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="solar" aria-hidden="true">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-unique-solar.png" alt="" aria-hidden="true">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-2.png" alt="" aria-hidden="true"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-unique-solar.png" alt="" aria-hidden="true" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-2.png" alt="" aria-hidden="true" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Unique Solar Residential</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="solar" aria-hidden="true">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-solar-caribbean.png" alt="" aria-hidden="true">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-1.png" alt="" aria-hidden="true"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-solar-caribbean.png" alt="" aria-hidden="true" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-1.png" alt="" aria-hidden="true" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Solar Caribbean</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="engineering" aria-hidden="true">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-praman-cad.png" alt="" aria-hidden="true">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-5.png" alt="" aria-hidden="true"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-praman-cad.png" alt="" aria-hidden="true" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-5.png" alt="" aria-hidden="true" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>PramanCAD Engineering</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="plumbing" aria-hidden="true">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/mockup-hudini-plumbing.png" alt="" aria-hidden="true">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-6.png" alt="" aria-hidden="true"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/mockup-hudini-plumbing.png" alt="" aria-hidden="true" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-6.png" alt="" aria-hidden="true" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Hudini Plumbing</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="other" aria-hidden="true">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/Bublez.png" alt="" aria-hidden="true">
-              <div class="portfolio-slide-badge"><img src="img/oos/BublezLogo.png" alt="" aria-hidden="true"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/Bublez.png" alt="" aria-hidden="true" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/BublezLogo.png" alt="" aria-hidden="true" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Bubblez</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="other" aria-hidden="true">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/BBR.png" alt="" aria-hidden="true">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-10.png" alt="" aria-hidden="true"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/BBR.png" alt="" aria-hidden="true" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-10.png" alt="" aria-hidden="true" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Blushed by Rosery</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="other" aria-hidden="true">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/JLH.png" alt="" aria-hidden="true">
-              <div class="portfolio-slide-badge"><img src="img/oos/JLLogo.png" alt="" aria-hidden="true"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/JLH.png" alt="" aria-hidden="true" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/JLLogo.png" alt="" aria-hidden="true" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Juan Look</h3></div>
           </div>
           <div class="portfolio-slide" data-portfolio-category="other" aria-hidden="true">
             <div class="portfolio-slide-frame">
-              <img class="portfolio-slide-mockup" src="img/oos/Iridescence.png" alt="" aria-hidden="true">
-              <div class="portfolio-slide-badge"><img src="img/oos/laptop-8.jpeg" alt="" aria-hidden="true"></div>
+              <img class="portfolio-slide-mockup" src="img/oos/Iridescence.png" alt="" aria-hidden="true" decoding="async">
+              <div class="portfolio-slide-badge"><img src="img/oos/laptop-8.jpeg" alt="" aria-hidden="true" decoding="async"></div>
             </div>
             <div class="portfolio-slide-caption"><h3>Iridescence</h3></div>
           </div>
@@ -1500,7 +1554,7 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
     <div class="container position-relative footer-hover-inner">
       <div class="row g-5 pb-4">
         <div class="col-md-6 col-lg-3">
-          <img class="footer-brand-logo" src="img/oos/outofsight-logo.png" alt="OutofSight logo">
+          <img class="footer-brand-logo" src="img/oos/outofsight-logo.png" alt="OutofSight logo" decoding="async">
           <p class="footer-brand-copy">Elite web engineering, AI chatbots, social media systems, branding, SEO, and digital automation for businesses ready to look sharper and convert better online.</p>
         </div>
 
@@ -1632,21 +1686,7 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
     </div>
   </div>
 
-  <div id="cookieConsent" class="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie and privacy notice">
-    <div class="cookie-consent-inner">
-      <p class="cookie-consent-text">
-        <strong>OutofSight</strong> builds high-converting websites, AI chatbots, and automation systems for businesses across Africa.
-        We use cookies and collect basic contact and usage information whenever you message us, chat with our AI assistant, or interact with this site, in line with our
-        <button type="button" class="cookie-consent-link" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</button>
-        and
-        <button type="button" class="cookie-consent-link" data-bs-toggle="modal" data-bs-target="#termsModal">Terms &amp; Conditions</button>.
-      </p>
-      <div class="cookie-consent-actions">
-        <button type="button" id="cookieDecline" class="cookie-btn cookie-btn-outline">Decline</button>
-        <button type="button" id="cookieAccept" class="cookie-btn cookie-btn-solid">Accept</button>
-      </div>
-    </div>
-  </div>
+
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="vendor/aos/aos.js"></script>
@@ -1681,39 +1721,7 @@ OutofSight builds high-converting websites, SEO strategies, lead generation syst
     })();
   </script>
 
-  <!-- Cookie consent banner -->
-  <script>
-    (function () {
-      var STORAGE_KEY = 'outofsightCookieConsent';
-      var banner = document.getElementById('cookieConsent');
-      if (!banner) return;
 
-      var accepted;
-      try {
-        accepted = localStorage.getItem(STORAGE_KEY);
-      } catch (e) {
-        accepted = null;
-      }
-
-      if (!accepted) {
-        banner.classList.add('cookie-consent--visible');
-      }
-
-      function setChoice(value) {
-        try {
-          localStorage.setItem(STORAGE_KEY, value);
-        } catch (e) {
-          /* localStorage unavailable — banner will simply reappear next visit */
-        }
-        banner.classList.remove('cookie-consent--visible');
-      }
-
-      var acceptBtn = document.getElementById('cookieAccept');
-      var declineBtn = document.getElementById('cookieDecline');
-      if (acceptBtn) acceptBtn.addEventListener('click', function () { setChoice('accepted'); });
-      if (declineBtn) declineBtn.addEventListener('click', function () { setChoice('declined'); });
-    })();
-  </script>
 </body>
 
 </html>
