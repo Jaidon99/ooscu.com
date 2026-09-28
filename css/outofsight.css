@@ -2217,18 +2217,11 @@ img {
 ========================================= */
 .client-carousel-section {
   background: var(--oos-bg);
-  padding: clamp(3rem, 6vw, 4.5rem) 0;
+  padding: clamp(3rem, 6vw, 4.5rem) 0 0;
 }
 
-.client-carousel-heading {
-  color: #fff;
-  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
-  font-weight: 900;
-  line-height: 1.1;
-  margin: 0 0 clamp(1.6rem, 4vw, 2.6rem);
-  padding: 0 1rem;
-  text-align: center;
-  text-transform: uppercase;
+.client-carousel-section .section-title {
+  margin-bottom: clamp(1.5rem, 3.5vw, 2.4rem);
 }
 
 .client-carousel {
@@ -2243,7 +2236,7 @@ img {
   pointer-events: none;
   position: absolute;
   top: 0;
-  width: 60px;
+  width: 80px;
   z-index: 2;
 }
 
@@ -2258,10 +2251,12 @@ img {
 }
 
 .client-carousel-track {
+  align-items: center;
   animation: oosClientScroll 40s linear infinite;
+  --client-gap: clamp(3rem, 6vw, 5.5rem);
   display: flex;
-  gap: 1.5rem;
-  padding: 0.5rem 0;
+  gap: var(--client-gap);
+  padding: 0.5rem var(--client-gap) 0.5rem 0;
   width: max-content;
 }
 
@@ -2269,65 +2264,51 @@ img {
   animation-play-state: paused;
 }
 
+/* logos sit directly on the site background – no tile */
 .client-logo {
   align-items: center;
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   display: flex;
   flex: 0 0 auto;
-  height: 150px;
+  height: 160px;
   justify-content: center;
-  overflow: hidden;
-  padding: 10px 14px;
-  width: 260px;
+  width: 300px;
 }
 
 .client-logo img {
   display: block;
-  height: 100%;
   max-height: 100%;
   max-width: 100%;
-  mix-blend-mode: multiply;
   object-fit: contain;
-  width: 100%;
 }
 
-/* Some logo files have built-in white space / off-white backgrounds; scale so all logos read at a similar size */
-.client-logo--satchwell img { transform: scale(1.55); }
-.client-logo--plumblink img { transform: scale(1.25); }
-.client-logo--iridescence img { transform: scale(1.3); }
-.client-logo--gsm img { transform: scale(1.05); }
+.client-logo--gsm img        { height: 150px; }
+.client-logo--plumblink img  { width: 290px; }
+.client-logo--satchwell img  { height: 150px; }
+.client-logo--hudini img     { width: 300px; }
+.client-logo--iridescence img{ height: 160px; }
 
 @keyframes oosClientScroll {
-  0% {
-    transform: translateX(0);
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
 
-  100% {
-    /* 4 identical groups: shift by exactly one group (25%) plus its trailing gap for a seamless loop */
-    transform: translateX(calc(-25% - 0.375rem));
-  }
+/* tighten the gap between the carousel and the process section that follows */
+.client-carousel-section + .section-band {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 @media (max-width: 575.98px) {
-  .client-logo {
-    height: 110px;
-    width: 200px;
-  }
-
+  .client-logo { height: 110px; width: 210px; }
+  .client-logo--gsm img         { height: 100px; }
+  .client-logo--plumblink img   { width: 200px; }
+  .client-logo--satchwell img   { height: 100px; }
+  .client-logo--hudini img      { width: 210px; }
+  .client-logo--iridescence img { height: 110px; }
   .client-carousel::before,
-  .client-carousel::after {
-    width: 40px;
-  }
+  .client-carousel::after { width: 36px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .client-carousel {
-    overflow-x: auto;
-  }
-
-  .client-carousel-track {
-    animation: none;
-  }
+  .client-carousel { overflow-x: auto; }
+  .client-carousel-track { animation: none; }
 }
